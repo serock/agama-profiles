@@ -29,9 +29,7 @@ local drive = std.sort(
       {
         "id": "Wired connection 1",
         "interface": ethernet,
-        "method4": "auto",
-        "method6": "disabled",
-        "ignore_auto_dns": false
+        "method4": "auto"
       }
     ]
   },
@@ -46,10 +44,8 @@ local drive = std.sort(
         "ptableType": "gpt",
         "partitions": [
           {
-            "delete": true,
-            "search": {
-              "ifNotFound": "skip"
-            }
+            "search": "*",
+            "delete": true
           },
           {
             "id": "linux",
@@ -100,8 +96,6 @@ local drive = std.sort(
   },
   "software": {
     "patterns": [
-      "yast2_basis",
-      "yast2_desktop",
       "gnome"
     ]
   }
