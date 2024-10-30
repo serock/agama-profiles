@@ -49,7 +49,7 @@ local drive = std.sort(
           },
           {
             "id": "linux",
-            "size": "100 GiB",
+            "size": "10 GiB",
             "filesystem": {
               "type": "ext4",
               "path": "/",
@@ -86,7 +86,7 @@ local drive = std.sort(
             "size": "2 GiB",
             "filesystem": {
               "type": "swap",
-              "path": "none",
+              "path": "swap",
               "mountBy": "uuid"
             }
           }
