@@ -16,14 +16,6 @@ local drive = std.sort(
     "keyboard": "us",
     "timezone": "America/New_York"
   },
-  "user": {
-    "fullName": "",
-    "userName": "",
-    "password": ""
-  },
-  "root": {
-    "password": ""
-  },
   "network": {
     "connections": [
       {
@@ -65,7 +57,7 @@ local drive = std.sort(
             "id": "linux",
             "encryption": {
               "luks2": {
-                "password": "",
+                "password": "nots3cr3t",
                 "pbkdFunction": "pbkdf2",
                 "label": "crypt_home"
               }
