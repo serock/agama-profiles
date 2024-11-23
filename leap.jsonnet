@@ -47,9 +47,8 @@ local drive = std.sort(
               "path": "/",
               "mountBy": "uuid",
               "mountOptions": [
-                "noatime",
-                "acl",
-                "user_xattr"
+                "defaults",
+                "noatime"
               ]
             }
           },
@@ -58,8 +57,7 @@ local drive = std.sort(
             "encryption": {
               "luks2": {
                 "password": "nots3cr3t",
-                "pbkdFunction": "pbkdf2",
-                "label": "crypt_home"
+                "pbkdFunction": "pbkdf2"
               }
             },
             "filesystem": {
@@ -67,19 +65,18 @@ local drive = std.sort(
               "path": "/home",
               "mountBy": "uuid",
               "mountOptions": [
-                "noatime",
-                "acl",
-                "user_xattr"
+                "defaults",
+                "noatime"
               ]
             }
           },
           {
             "id": "swap",
             "size": "2 GiB",
+            "encryption": "random_swap",
             "filesystem": {
               "type": "swap",
-              "path": "swap",
-              "mountBy": "uuid"
+              "path": "swap"
             }
           }
         ]
