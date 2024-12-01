@@ -40,8 +40,6 @@ local drive = std.sort(
             "delete": true
           },
           {
-            "id": "linux",
-            "size": "10 GiB",
             "filesystem": {
               "type": "ext4",
               "path": "/",
@@ -50,10 +48,10 @@ local drive = std.sort(
                 "defaults",
                 "noatime"
               ]
-            }
+            },
+            "size": "10 GiB"
           },
           {
-            "id": "linux",
             "encryption": {
               "luks2": {
                 "password": "nots3cr3t",
@@ -71,13 +69,12 @@ local drive = std.sort(
             }
           },
           {
-            "id": "swap",
-            "size": "2 GiB",
             "encryption": "random_swap",
             "filesystem": {
               "type": "swap",
               "path": "swap"
-            }
+            },
+            "size": "2 GiB"
           }
         ]
       }
