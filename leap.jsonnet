@@ -26,6 +26,16 @@ local drive = std.sort(
     keyboard: "us",
     timezone: "America/New_York"
   },
+  root: {
+    hashedPassword: true,
+    password: "$6$5SFO1XN8VAyuwW.G$LaLNJCAAuqCyT.dgEUW9r4VtDSuS4mRvxnWnMaJC4Wc9THz.Uc/SQDxXuY9Kc8zpAJ1G4FKTWou9t/qEZPSAM1"
+  },
+  user: {
+    fullName: "John",
+    userName: "john",
+    hashedPassword: true,
+    password: "$6$5SFO1XN8VAyuwW.G$LaLNJCAAuqCyT.dgEUW9r4VtDSuS4mRvxnWnMaJC4Wc9THz.Uc/SQDxXuY9Kc8zpAJ1G4FKTWou9t/qEZPSAM1"
+  },
   hostname: {
     static: getHostname(board)
   },
