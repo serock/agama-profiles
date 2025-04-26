@@ -1,6 +1,16 @@
 local agama = import "hw.libsonnet";
-
-local ethernet = std.filter(function(n) n.description == "Ethernet interface", agama.selectByClass(agama.lshw, "network"))[0].logicalname;
+local board = agama.findByID(agama.lshw, "core").product;
+local getHostname(motherboard) =
+  if motherboard == "PRIME H370M-PLUS" then
+    "desktop"
+  else if motherboard == "4239CTO" then
+    "laptop15"
+  else if motherboard == "IPXBD-RB" then
+    "mini"
+  else if motherboard == "VirtualBox" then
+    "vbox"
+  else
+    "agama";
 local drive = std.sort(
   std.filter(
     function(d) std.objectHas(d, "size"),
@@ -8,80 +18,103 @@ local drive = std.sort(
   function(x) -x.size)[0].logicalname;
 
 {
-  "product": {
-    "id": "Leap_16.0"
+  product: {
+    id: "Leap_16.0"
   },
-  "localization": {
-    "language": "en_US.UTF-8",
-    "keyboard": "us",
-    "timezone": "America/New_York"
+  localization: {
+    language: "en_US.UTF-8",
+    keyboard: "us",
+    timezone: "America/New_York"
   },
-  "network": {
-    "connections": [
+  hostname: {
+    static: getHostname(board)
+  },
+  network: {
+    connections: [
       {
-        "id": "Wired connection 1",
-        "interface": ethernet,
-        "method4": "auto"
+        id: "Wired connection 1",
+        method4: "auto",
+        match: {
+          driver: ["e1000e", "e1000"]
+        }
       }
     ]
   },
-  "storage": {
-    "boot": {
-      "configure": true,
-      "device": drive
-    },
-    "drives": [
+  scripts: {
+    post: [
       {
-        "search": drive,
-        "ptableType": "gpt",
-        "partitions": [
+        name: "nm",
+        url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/network-manager.sh"
+      }
+    ],
+    init: [
+      {
+        name: "nm-radio",
+        url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/nm-radio.sh"
+      },
+      {
+        name: "cdn",
+        url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/cdn.sh"
+      }
+    ]
+  },
+  storage: {
+    boot: {
+      configure: true,
+      device: drive
+    },
+    drives: [
+      {
+        search: drive,
+        ptableType: "gpt",
+        partitions: [
           {
-            "search": "*",
-            "delete": true
+            search: "*",
+            delete: true
           },
           {
-            "filesystem": {
-              "type": "ext4",
-              "path": "/",
-              "mountBy": "uuid",
-              "mountOptions": [
+            filesystem: {
+              type: "ext4",
+              path: "/",
+              mountBy: "uuid",
+              mountOptions: [
                 "defaults",
                 "noatime"
               ]
             },
-            "size": "10 GiB"
+            size: "10 GiB"
           },
           {
-            "encryption": {
-              "luks2": {
-                "password": "nots3cr3t",
-                "pbkdFunction": "pbkdf2"
+            encryption: {
+              luks2: {
+                password: "nots3cr3t",
+                pbkdFunction: "pbkdf2"
               }
             },
-            "filesystem": {
-              "type": "ext4",
-              "path": "/home",
-              "mountBy": "uuid",
-              "mountOptions": [
+            filesystem: {
+              type: "ext4",
+              path: "/home",
+              mountBy: "uuid",
+              mountOptions: [
                 "defaults",
                 "noatime"
               ]
             }
           },
           {
-            "encryption": "random_swap",
-            "filesystem": {
-              "type": "swap",
-              "path": "swap"
+            encryption: "random_swap",
+            filesystem: {
+              type: "swap",
+              path: "swap"
             },
-            "size": "2 GiB"
+            size: "2 GiB"
           }
         ]
       }
     ]
   },
-  "software": {
-    "patterns": [
+  software: {
+    patterns: [
       "gnome"
     ]
   }
