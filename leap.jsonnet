@@ -61,11 +61,12 @@ local drive = std.sort(
   storage: {
     boot: {
       configure: true,
-      device: drive
+      device: "bootdrive"
     },
     drives: [
       {
         search: drive,
+        alias: "bootdrive",
         ptableType: "gpt",
         partitions: [
           {
