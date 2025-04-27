@@ -26,15 +26,15 @@ local drive = std.sort(
     keyboard: "us",
     timezone: "America/New_York"
   },
-  root: {
-    hashedPassword: true,
-    password: "$6$5SFO1XN8VAyuwW.G$LaLNJCAAuqCyT.dgEUW9r4VtDSuS4mRvxnWnMaJC4Wc9THz.Uc/SQDxXuY9Kc8zpAJ1G4FKTWou9t/qEZPSAM1"
-  },
   user: {
     fullName: "John",
     userName: "john",
     hashedPassword: true,
     password: "$6$5SFO1XN8VAyuwW.G$LaLNJCAAuqCyT.dgEUW9r4VtDSuS4mRvxnWnMaJC4Wc9THz.Uc/SQDxXuY9Kc8zpAJ1G4FKTWou9t/qEZPSAM1"
+  },
+  root: {
+    hashedPassword: $.user.hashedPassword,
+    password: $.user.password
   },
   hostname: {
     static: getHostname(board)
@@ -42,8 +42,9 @@ local drive = std.sort(
   network: {
     connections: [
       {
-        id: "Wired connection 1",
+        id: "wired-home",
         method4: "auto",
+        method6: "disabled",
         match: {
           driver: ["e1000e", "e1000"]
         }
@@ -53,18 +54,24 @@ local drive = std.sort(
   scripts: {
     post: [
       {
-        name: "nm",
-        url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/network-manager.sh"
-      }
-    ],
-    init: [
-      {
-        name: "nm-radio",
-        url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/nm-radio.sh"
-      },
-      {
+        chroot: true,
         name: "cdn",
         url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/cdn.sh"
+      },
+      {
+        chroot: true,
+        name: "chrony-pool",
+        url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/chrony-pool.sh"
+      },
+      {
+        chroot: true,
+        name: "nm",
+        url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/network-manager.sh"
+      },
+      {
+        chroot: true,
+        name: "welcome",
+        url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/welcome.sh"
       }
     ]
   },
@@ -127,7 +134,61 @@ local drive = std.sort(
   software: {
     patterns: [
       "gnome"
-    ]
+    ],
+    packages: [
+      "avahi-utils",
+      "bijiben",
+      "chromium",
+      "ddclient",
+      "git-core",
+      "gstreamer-plugin-openh264",
+      "hplip-scan-utils",
+      "imagewriter",
+      "keepassxc",
+      "libcap-ng-utils",
+      "libfido2-udev",
+      "libpcap-devel",
+      "lshw",
+      "mozilla-openh264",
+      "python313-Pillow-tk",
+      "simple-scan",
+      "wireshark-ui-qt",
+      "yubikey-manager-qt",
+      "yubioath-desktop"
+    ] + (
+      if board == "PRIME H370M-PLUS" then [
+        "apcupsd-gui",
+        "bash-completion-devel",
+        "bash-completion-doc",
+        "binwalk",
+        "checksec",
+        "devscripts",
+        "docker-bash-completion",
+        "dpkg",
+        "gcc-PIE",
+        "gcc-ada",
+        "gcc-c++",
+        "gcc14-PIE",
+        "gcc14-ada",
+        "gcc14-c++",
+        "git-gui",
+        "gitk",
+        "gnucash",
+        "homebank",
+        "java-21-openjdk-devel",
+        "lighttpd",
+        "maven",
+        "mkvtoolnix",
+        "nvme-cli-bash-completion",
+        "osc",
+        "pavucontrol",
+        "quilt",
+        "rpm-devel",
+        "rpmdevtools",
+        "rpmlint",
+        "rpmlint-Factory",
+        "virtualbox-qt"
+      ] else []
+    )
   }
 }
-
