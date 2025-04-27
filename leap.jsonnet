@@ -1,13 +1,13 @@
 local agama = import "hw.libsonnet";
 local board = agama.findByID(agama.lshw, "core").product;
-local getHostname(motherboard) =
-  if motherboard == "PRIME H370M-PLUS" then
+local getHostname() =
+  if board == "PRIME H370M-PLUS" then
     "desktop"
-  else if motherboard == "4239CTO" then
+  else if board == "4239CTO" then
     "laptop15"
-  else if motherboard == "IPXBD-RB" then
+  else if board == "IPXBD-RB" then
     "mini"
-  else if motherboard == "VirtualBox" then
+  else if board == "VirtualBox" then
     "vbox"
   else
     "agama";
@@ -37,7 +37,7 @@ local drive = std.sort(
     password: $.user.password
   },
   hostname: {
-    static: getHostname(board)
+    static: getHostname()
   },
   network: {
     connections: [
