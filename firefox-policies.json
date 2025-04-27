@@ -1,0 +1,122 @@
+{
+  "policies": {
+    "DisabledCiphers": {
+      "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA": true,
+      "TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA": true,
+      "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA": true,
+      "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA": true,
+      "TLS_RSA_WITH_AES_128_CBC_SHA": true,
+      "TLS_RSA_WITH_AES_256_CBC_SHA": true,
+      "TLS_RSA_WITH_3DES_EDE_CBC_SHA": true
+    },
+    "DisableFirefoxAccounts": true,
+    "DisableFirefoxStudies": true,
+    "DisableFormHistory": true,
+    "DisablePocket": true,
+    "DisableTelemetry": true,
+    "DNSOverHTTPS": {
+      "Enabled": false,
+      "ExcludedDomains": [],
+      "Locked": true
+    },
+    "EnableTrackingProtection": {
+      "Value": true,
+      "Locked": true,
+      "Cryptomining": true,
+      "EmailTracking": true,
+      "Fingerprinting": true,
+      "Exceptions": []
+    },
+    "FirefoxHome": {
+      "Search": false,
+      "TopSites": false,
+      "SponsoredTopSites": false,
+      "Highlights": false,
+      "Pocket": false,
+      "SponsoredPocket": false,
+      "Snippets": false,
+      "Locked": true
+    },
+    "NetworkPrediction": false,
+    "NewTabPage": false,
+    "OfferToSaveLogins": false,
+    "OverrideFirstRunPage": "",
+    "OverridePostUpdatePage": "",
+    "PasswordManagerEnabled": false,
+    "Permissions": {
+      "Autoplay": {
+        "Default": "block-audio-video",
+        "Locked": true
+      }
+    },
+    "Preferences": {
+      "browser.cache.disk.enable":{
+        "Value": false,
+        "Status": "locked"
+      },
+      "browser.contentblocking.category": {
+        "Value": "strict",
+        "Status": "locked"
+      },
+      "browser.fixup.domainsuffixwhitelist.lan": {
+        "Value": true,
+        "Status": "locked"
+      },
+      "browser.urlbar.suggest.quicksuggest.nonsponsored": {
+        "Value": false,
+        "Status": "locked"
+      },
+      "browser.urlbar.suggest.quicksuggest.sponsored": {
+        "Value": false,
+        "Status": "locked"
+      },
+      "browser.urlbar.suggest.topsites": {
+        "Value": false,
+        "Status": "locked"
+      },
+      "dom.disable_window_flip": {
+        "Value": true,
+        "Status": "locked"
+      },
+      "dom.disable_window_move_resize": {
+        "Value": true,
+        "Status": "locked"
+      },
+      "extensions.formautofill.addresses.enabled": {
+        "Value": false,
+        "Status": "locked"
+      },
+      "extensions.formautofill.creditCards.enabled": {
+        "Value": false,
+        "Status": "locked"
+      },
+      "extensions.htmlaboutaddons.recommendations.enabled": {
+        "Value": false,
+        "Status": "locked"
+      },
+      "network.IDN_show_punycode": {
+        "Value": true,
+        "Status": "locked"
+      },
+      "privacy.globalprivacycontrol.enabled": {
+        "Value": true,
+        "Status": "locked"
+      },
+      "privacy.globalprivacycontrol.functionality.enabled": {
+        "Value": true,
+        "Status": "locked"
+      },
+      "security.warn_submit_secure_to_insecure": {
+        "Value": true,
+        "Status": "locked"
+      }       
+    },
+    "SearchSuggestEnabled": false,
+    "SSLVersionMin": "tls1.2",
+    "UserMessaging": {
+      "ExtensionRecommendations": false,
+      "SkipOnboarding": true,
+      "Locked": true
+    }
+  }
+}

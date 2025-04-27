@@ -60,6 +60,11 @@ local drive = std.sort(
       },
       {
         chroot: true,
+        name: "chrony-dhcp",
+        url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/chrony-dhcp.sh"
+      },
+      {
+        chroot: true,
         name: "chrony-pool",
         url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/chrony-pool.sh"
       },
@@ -190,5 +195,28 @@ local drive = std.sort(
         "virtualbox-qt"
       ] else []
     )
-  }
+  },
+  files: [
+    {
+      destination: "/etc/chromium/policies/managed/chromium-policies.json",
+      url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/chromium-policies.json",
+      permissions: "644",
+      user: "root",
+      group: "root"
+    },
+    {
+      destination: "/etc/firefox/policies/policies.json",
+      url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/firefox-policies.json",
+      permissions: "644",
+      user: "root",
+      group: "root"
+    },
+    {
+      destination: "/etc/chrony.d/dhcp.conf",
+      url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/chrony-dhcp.conf",
+      permissions: "644",
+      user: "root",
+      group: "root"
+    }
+  ]
 }
