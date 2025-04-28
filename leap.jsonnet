@@ -69,13 +69,15 @@ local drive = std.sort(
         url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/chrony-pool.sh"
       },
       {
-        name: "nm",
-        url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/network-manager.sh"
-      },
-      {
         chroot: true,
         name: "welcome",
         url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/welcome.sh"
+      }
+    ],
+    init: [
+      {
+        name: "nm",
+        url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/network-manager.sh"
       }
     ]
   },
