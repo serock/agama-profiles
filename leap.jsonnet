@@ -145,7 +145,6 @@ local drive = std.sort(
       "avahi-utils",
       "bijiben",
       "chromium",
-      "ddclient",
       "git-core",
       "gstreamer-plugin-openh264",
       "hplip-scan-utils",
