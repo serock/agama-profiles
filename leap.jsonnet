@@ -56,22 +56,47 @@ local drive = std.sort(
       {
         chroot: true,
         name: "cdn",
-        url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/cdn.sh"
+        content: |||
+          #!/bin/bash
+          zypper refresh --services
+          zypper modifyrepo --disable openSUSE:repo-non-oss openSUSE:update-non-oss
+        |||
       },
       {
         chroot: true,
         name: "chrony-dhcp",
-        url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/chrony-dhcp.sh"
+        content: |||
+          #!/bin/bash
+          cp /usr/share/doc/packages/chrony/examples/chrony.nm-dispatcher.dhcp /etc/NetworkManager/dispatcher.d/20-chrony-dhcp
+          chmod 755 /etc/NetworkManager/dispatcher.d/20-chrony-dhcp
+        |||
       },
       {
         chroot: true,
         name: "chrony-pool",
-        url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/chrony-pool.sh"
+        content: |||
+          #!/bin/bash
+          zypper --non-interactive remove chrony-pool-openSUSE
+          zypper --non-interactive addlock chrony-pool-openSUSE
+          zypper --non-interactive install chrony-pool-empty
+        |||
       },
       {
         chroot: true,
         name: "welcome",
-        url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/welcome.sh"
+        content: |||
+          #!/bin/bash
+          zypper --non-interactive remove opensuse-welcome
+          zypper --non-interactive addlock opensuse-welcome
+        |||
+      },
+      {
+        chroot: true,
+        name: "wireshark",
+        content: |||
+          #!/bin/bash
+          usermod --append --groups wireshark $.user.userName
+        |||
       }
     ],
     init: [
@@ -205,6 +230,15 @@ local drive = std.sort(
       group: "root"
     },
     {
+      destination: "/etc/chrony.d/dhcp.conf",
+      content: |||-
+        sourcedir /var/run/chrony-dhcp
+      |||,
+      permissions: "644",
+      user: "root",
+      group: "root"
+    },
+    {
       destination: "/etc/firefox/policies/policies.json",
       url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/firefox-policies.json",
       permissions: "644",
@@ -212,8 +246,12 @@ local drive = std.sort(
       group: "root"
     },
     {
-      destination: "/etc/chrony.d/dhcp.conf",
-      url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/chrony-dhcp.conf",
+      destination: "/etc/security/limits.conf",
+      content: |||
+        # man limits.conf
+        #
+        *               soft    core            0
+      |||,
       permissions: "644",
       user: "root",
       group: "root"
