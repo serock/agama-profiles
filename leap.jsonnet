@@ -231,7 +231,7 @@ local drive = std.sort(
     },
     {
       destination: "/etc/chrony.d/dhcp.conf",
-      content: |||-
+      content: |||
         sourcedir /var/run/chrony-dhcp
       |||,
       permissions: "644",
