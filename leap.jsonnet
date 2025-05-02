@@ -95,8 +95,8 @@ local drive = std.sort(
         name: "wireshark",
         content: |||
           #!/bin/bash
-          usermod --append --groups wireshark $.user.userName
-        |||
+          usermod --append --groups wireshark %s
+        ||| % $.user.userName
       }
     ],
     init: [
