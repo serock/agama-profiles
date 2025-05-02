@@ -55,7 +55,7 @@ local drive = std.sort(
     post: [
       {
         chroot: true,
-        name: "cdn",
+        name: "cdn-disable-non-oss",
         content: |||
           #!/bin/bash
           zypper refresh --services
@@ -73,7 +73,7 @@ local drive = std.sort(
       },
       {
         chroot: true,
-        name: "chrony-pool",
+        name: "chrony-pool-remove",
         content: |||
           #!/bin/bash
           zypper --non-interactive remove chrony-pool-openSUSE
@@ -83,7 +83,7 @@ local drive = std.sort(
       },
       {
         chroot: true,
-        name: "welcome",
+        name: "welcome-remove",
         content: |||
           #!/bin/bash
           zypper --non-interactive remove opensuse-welcome
@@ -92,7 +92,7 @@ local drive = std.sort(
       },
       {
         chroot: true,
-        name: "wireshark",
+        name: "wireshark-user",
         content: |||
           #!/bin/bash
           usermod --append --groups wireshark %s
@@ -101,7 +101,7 @@ local drive = std.sort(
     ],
     init: [
       {
-        name: "nm",
+        name: "nm-init",
         url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/network-manager.sh"
       }
     ]
