@@ -18,4 +18,6 @@ ipv6.dns "2620:119:35::35 2620:119:53::53" \
 ipv6.ignore-auto-dns yes \
 ipv6.method auto
 
+nmcli connection delete id "Wired connection 1"
+
 nmcli radio all off
