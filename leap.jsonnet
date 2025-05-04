@@ -98,13 +98,59 @@ local drive = std.sort(
           usermod --append --groups wireshark %s
         ||| % $.user.userName
       }
-    ],
+    ] + (
+      if board == "PRIME H370M-PLUS" then [
+        {
+          chroot: true,
+          name: "docker-user",
+          content: |||
+            #!/bin/bash
+            usermod --append --groups docker %s
+          ||| % $.user.userName
+        },
+        {
+          chroot: true,
+          name: "osc-user",
+          content: |||
+            #!/bin/bash
+            usermod --append --groups osc %s
+          ||| % $.user.userName
+        },
+        {
+          chroot: true,
+          name: "vbox-user",
+          content: |||
+            #!/bin/bash
+            usermod --append --groups vboxusers %s
+          ||| % $.user.userName
+        }
+      ] else []
+    ),
     init: [
+      {
+        name: "mm-disable",
+        content: |||
+          #!/bin/bash
+          systemctl disable ModemManager.service
+        |||
+      },
       {
         name: "nm-init",
         url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/network-manager.sh"
       }
-    ]
+    ] + (
+      if board == "PRIME H370M-PLUS" then [
+        {
+          name: "vbox-guest-additions",
+          content: |||
+            #!/bin/bash
+            version=$(VBoxManage --version | cut --delimiter=_ --fields=1)
+            curl --cert-status --compressed --create-dirs --no-progress-meter --output-dir /usr/lib/virtualbox/additions --remote-name https://download.virtualbox.org/virtualbox/${version}/VBoxGuestAdditions_${version}.iso
+            ln --relative --symbolic /usr/lib/virtualbox/additions/VBoxGuestAdditions_${version}.iso /usr/lib/virtualbox/additions/VBoxGuestAdditions.iso
+          |||
+        }
+      ] else []
+    )
   },
   storage: {
     boot: {
@@ -136,7 +182,7 @@ local drive = std.sort(
           {
             encryption: {
               luks2: {
-                password: "nots3cr3t",
+                password: "changeme",
                 pbkdFunction: "pbkdf2"
               }
             },
@@ -247,5 +293,26 @@ local drive = std.sort(
       user: "root",
       group: "root"
     }
-  ]
+  ] + (
+    if board == "PRIME H370M-PLUS" then [
+      {
+        destination: "/etc/apcupsd/apcupsd.conf",
+        url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/apcupsd.conf",
+        permissions: "644",
+        user: "root",
+        group: "root"
+      },
+      {
+        destination: "/etc/sudoers.d/osc",
+        content: |||
+          # sudoers file "/etc/sudoers.d/osc" for the osc group
+          Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
+          %osc  ALL = (ALL) NOPASSWD:OSC_CMD
+        |||,
+        permissions: "440",
+        user: "root",
+        group: "root"
+      }
+    ] else []
+  )
 }
