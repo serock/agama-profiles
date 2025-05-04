@@ -230,15 +230,6 @@ local drive = std.sort(
       group: "root"
     },
     {
-      destination: "/etc/chrony.d/dhcp.conf",
-      content: |||
-        sourcedir /var/run/chrony-dhcp
-      |||,
-      permissions: "644",
-      user: "root",
-      group: "root"
-    },
-    {
       destination: "/etc/firefox/policies/policies.json",
       url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/firefox-policies.json",
       permissions: "644",
