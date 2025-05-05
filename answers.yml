@@ -1,0 +1,13 @@
+{
+  "answers": [
+    {
+      "answer": "decrypt",
+      "class": "storage.luks_activation",
+      "password": "changeme"
+    },
+    {
+      "answer": "Retry",
+      "class": "software.medium_error"
+    },
+  ]
+}
