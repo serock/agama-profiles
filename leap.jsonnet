@@ -210,6 +210,7 @@ local drive = std.sort(
   },
   software: {
     patterns: [
+      "cockpit",
       "gnome"
     ],
     packages: [
