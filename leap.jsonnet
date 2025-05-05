@@ -177,7 +177,7 @@ local drive = std.sort(
                 "noatime"
               ]
             },
-            size: "10 GiB"
+            size: "16 GiB"
           },
           {
             encryption: {
