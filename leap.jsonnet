@@ -11,6 +11,7 @@ local getHostname() =
     "vbox"
   else
     "agama";
+// Clue: https://github.com/agama-project/agama/blob/cfa8d9057004d279508241febf5e97a344300350/rust/agama-lib/share/examples/profile.jsonnet#L15
 local drive = std.sort(
   std.filter(
     function(d) std.objectHas(d, "size"),
@@ -19,6 +20,7 @@ local drive = std.sort(
 
 {
   product: {
+    // Clue: https://github.com/agama-project/agama/blob/cfa8d9057004d279508241febf5e97a344300350/products.d/leap_160.yaml#L1
     id: "Leap_16.0"
   },
   localization: {
@@ -26,10 +28,12 @@ local drive = std.sort(
     keyboard: "us",
     timezone: "America/New_York"
   },
+  // Clue: https://agama-project.github.io/docs/user/unattended/users#user
   user: {
     fullName: "John",
     userName: "john",
     hashedPassword: true,
+    // Clue: https://agama-project.github.io/docs/user/unattended/users#encrypted-passwords
     password: "$6$5SFO1XN8VAyuwW.G$LaLNJCAAuqCyT.dgEUW9r4VtDSuS4mRvxnWnMaJC4Wc9THz.Uc/SQDxXuY9Kc8zpAJ1G4FKTWou9t/qEZPSAM1"
   },
   root: {
@@ -142,6 +146,7 @@ local drive = std.sort(
       if board == "PRIME H370M-PLUS" then [
         {
           name: "vbox-guest-additions",
+          // Clue: https://www.virtualbox.org/manual/topics/guestadditions.html#ariaid-title5
           content: |||
             #!/bin/bash
             version=$(VBoxManage --version | cut --delimiter=_ --fields=1)
@@ -270,6 +275,9 @@ local drive = std.sort(
   },
   files: [
     {
+      // Clue: https://www.chromium.org/administrators/linux-quick-start/#set-up-policies
+      // Clue: https://chromium.googlesource.com/chromium/src/+/HEAD/docs/enterprise/policies.md#policy-sources
+      // Clue: chrome://policy/logs
       destination: "/etc/chromium/policies/managed/chromium-policies.json",
       url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/chromium-policies.json",
       permissions: "644",
@@ -277,6 +285,7 @@ local drive = std.sort(
       group: "root"
     },
     {
+      // Clue: https://mozilla.github.io/policy-templates/
       destination: "/etc/firefox/policies/policies.json",
       url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/firefox-policies.json",
       permissions: "644",
@@ -304,12 +313,14 @@ local drive = std.sort(
         group: "root"
       },
       {
+        // Clue: https://openbuildservice.org/help/manuals/obs-user-guide/art-obs-bg#pro-obsbg-obsconfig
         destination: "/etc/sudoers.d/osc",
         content: |||
           # sudoers file "/etc/sudoers.d/osc" for the osc group
           Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
           %osc  ALL = (ALL) NOPASSWD:OSC_CMD
         |||,
+        // Clue: visudo --check
         permissions: "440",
         user: "root",
         group: "root"
