@@ -43,18 +43,6 @@ local drive = std.sort(
   hostname: {
     static: getHostname()
   },
-  network: {
-    connections: [
-      {
-        id: "wired-home",
-        method4: "auto",
-        method6: "disabled",
-        match: {
-          driver: ["e1000e", "e1000"]
-        }
-      }
-    ]
-  },
   scripts: {
     post: [
       {

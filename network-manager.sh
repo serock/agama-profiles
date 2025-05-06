@@ -1,8 +1,12 @@
 #!/bin/bash
-nmcli connection modify id wired-home \
+nmcli connection add \
+connection.id wired-home \
 connection.autoconnect-priority 0 \
+connection.type 802-3-ethernet \
 connection.zone home \
-802-3-ethernet.wake-on-lan ignore
+802-3-ethernet.wake-on-lan ignore \
+ipv4.method auto \
+ipv6.method disabled
 
 nmcli connection add \
 connection.id wired-public \
