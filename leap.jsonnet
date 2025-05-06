@@ -220,6 +220,7 @@ local drive = std.sort(
       "libpcap-devel",
       "lshw",
       "mozilla-openh264",
+      "myrlyn",
       "python313-Pillow-tk",
       "simple-scan",
       "wireshark-ui-qt",
