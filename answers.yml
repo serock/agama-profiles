@@ -6,7 +6,24 @@
     },
     {
       "answer": "Retry",
-      "class": "software.medium_error"
+      "class": "software.medium_error",
+      "data": {
+        "attempt": "1"
+      }
+    },
+    {
+      "answer": "Retry",
+      "class": "software.medium_error",
+      "data": {
+        "attempt": "2"
+      }
+    },
+    {
+      "answer": "Skip",
+      "class": "software.medium_error",
+      "data": {
+        "attempt": "3"
+      }
     }
   ]
 }
