@@ -13,9 +13,9 @@ Attach the downloaded ISO to the optical drive of the virtual machine.
 
 Start the virtual machine.
 
-Select *UEFI Firmware Settings*
-Select *Boot Manager*
-Select *UEFI VBOX CD-ROM*
+Select *UEFI Firmware Settings*\
+Select *Boot Manager*\
+Select *UEFI VBOX CD-ROM*\
 Select *Install openSUSE (x86_64)*
 
 When the Product Selection page appears, press Ctrl-Alt-T to get to a terminal.
