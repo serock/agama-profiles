@@ -24,21 +24,12 @@ When the Product Selection page appears, press Ctrl-Alt-T to get to a terminal.
 agama download https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/answers.yml answers.yml
 agama download https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/leap.jsonnet leap.jsonnet
 
-chmod u+w leap.jsonnet
-sed -i 's/changeme/realpassword/' leap.jsonnet
+sed -i 's/changeme/realpassphrase/' leap.jsonnet
 
 agama questions answers /root/answers.yml
 agama profile import file:///root/leap.jsonnet
 
 agama install
 agama finish reboot
-```
-
-### Fix for Permission Denied in Cockpit
-See https://forums.opensuse.org/t/leap-16-beta-cockpit-login-fails-permission-denied/184770
-
-```
-sudo zypper install -f cockpit-selinux-policies
-sudo systemctl reboot
 ```
 
