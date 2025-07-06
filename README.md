@@ -18,7 +18,7 @@ Select *Boot Manager*\
 Select *UEFI VBOX CD-ROM*\
 Select *Install openSUSE (x86_64)*
 
-When the Product Selection page appears, press Ctrl-Alt-T to get to a terminal.
+When the Product Selection page appears, press Ctrl-Alt-T to get to a terminal or press Right-Ctrl-F1 to get to the console.
 
 ```
 agama download https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/answers.yml answers.yml
@@ -27,7 +27,7 @@ agama download https://raw.githubusercontent.com/serock/agama-profiles/refs/head
 sed -i 's/changeme/realpassphrase/' leap.jsonnet
 
 agama questions answers /root/answers.yml
-agama profile import file:///root/leap.jsonnet
+agama config generate /root/leap.jsonnet | agama config load
 
 agama install
 agama finish reboot
