@@ -11,12 +11,6 @@ local getHostname() =
     "vbox"
   else
     "agama";
-// Clue: https://github.com/agama-project/agama/blob/cfa8d9057004d279508241febf5e97a344300350/rust/agama-lib/share/examples/profile.jsonnet#L15
-local drive = std.sort(
-  std.filter(
-    function(d) std.objectHas(d, "size"),
-    agama.selectByClass(agama.lshw, "disk")),
-  function(x) -x.size)[0].logicalname;
 
 {
   product: {
@@ -152,7 +146,13 @@ local drive = std.sort(
     },
     drives: [
       {
-        search: drive,
+        // Clue: https://agama-project.github.io/blog/2025/07/04/agama-16#search
+        search: {
+          "sort": {
+            "size": "desc"
+          },
+          "max": 1
+        },
         alias: "bootdrive",
         ptableType: "gpt",
         partitions: [
