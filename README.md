@@ -5,9 +5,10 @@ They are not intended to be used *as is* by anyone except myself.
 ## Testing in VirtualBox
 Download an ISO file from one of the following locations:
 
-* https://download.opensuse.org/distribution/leap/16.0/installer/iso/
-* https://download.opensuse.org/repositories/systemsmanagement:/Agama:/Release/images/iso/
 * https://download.opensuse.org/repositories/systemsmanagement:/Agama:/Devel/images/iso/
+* https://download.opensuse.org/repositories/systemsmanagement:/Agama:/Release/images/iso/
+* https://download.opensuse.org/distribution/leap/16.0/installer/iso/
+* https://download.opensuse.org/distribution/leap/16.0/offline/
 
 Attach the downloaded ISO to the optical drive of the virtual machine.
 
@@ -16,13 +17,16 @@ Start the virtual machine.
 Select *UEFI Firmware Settings*\
 Select *Boot Manager*\
 Select *UEFI VBOX CD-ROM*\
-Select *Install openSUSE (x86_64)*
+Select *Install openSUSE (x86_64)* or *Install Leap 16.0 (x86_64)*
 
-When the Product Selection page appears, press Ctrl-Alt-T to get to a terminal or press Right-Ctrl-F1 to get to the console.
+When the Product Selection page appears, do one of the following:
+
+1. Press Ctrl-Alt-T to get to a terminal, or
+2. Press Right-Ctrl-F1 to get to the console and login as root.
 
 ```
-agama download https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/answers.yml answers.yml
-agama download https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/leap.jsonnet leap.jsonnet
+agama download https://github.com/serock/agama-profiles/raw/main/answers.yml answers.yml
+agama download https://github.com/serock/agama-profiles/raw/main/leap.jsonnet leap.jsonnet
 
 sed -i 's/changeme/realpassphrase/' leap.jsonnet
 
