@@ -203,7 +203,7 @@ local getHostname() =
   },
   software: {
     patterns: [
-      "cockpit",
+      "cockpit",// error
       "gnome"
     ],
     packages: [
@@ -211,54 +211,52 @@ local getHostname() =
       "bijiben",
       "chromium",
       "git-core",
-      "gstreamer-plugin-openh264",
-      "hplip-scan-utils",
-      "imagewriter",
+      "gstreamer-plugin-openh264",// missing
+      "hplip-scan-utils",// missing
+      "imagewriter",// missing
       "keepassxc",
       "libcap-ng-utils",
       "libfido2-udev",
-      "libpcap-devel",
+      "libpcap-devel",// missing
       "lshw",
       "mozilla-openh264",
       "myrlyn",
       "python313-Pillow-tk",
       "simple-scan",
       "wireshark-ui-qt",
-      "yubikey-manager-qt",
-      "yubioath-desktop"
+      "yubikey-manager-qt",// missing
+      "yubioath-desktop"// missing
     ] + (
       if board == "PRIME H370M-PLUS" then [
-        "apcupsd-gui",
-        "bash-completion-devel",
+        "apcupsd-gui",//missing
+        "bash-completion-devel",// missing
         "bash-completion-doc",
         "binwalk",
         "checksec",
         "devscripts",
         "docker-bash-completion",
         "dpkg",
-        "gcc-PIE",
         "gcc-ada",
         "gcc-c++",
-        "gcc14-PIE",
-        "gcc14-ada",
-        "gcc14-c++",
+        "gcc15-ada",
+        "gcc15-c++",
         "git-gui",
         "gitk",
         "gnucash",
         "homebank",
-        "java-21-openjdk-devel",
-        "lighttpd",
+        "java-21-openjdk-devel",// missing
+        "lighttpd",// missing
         "maven",
         "mkvtoolnix",
         "nvme-cli-bash-completion",
         "osc",
         "pavucontrol",
         "quilt",
-        "rpm-devel",
+        "rpm-devel",// missing
         "rpmdevtools",
         "rpmlint",
-        "rpmlint-Factory",
-        "virtualbox-qt"
+        "rpmlint-Factory",// missing
+        "virtualbox-qt"// missing
       ] else []
     )
   },
