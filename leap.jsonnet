@@ -69,6 +69,14 @@ local getHostname() =
       },
       {
         chroot: true,
+        name: "openh264-install",
+        content: |||
+          #!/bin/bash
+          zypper --non-interactive install mozilla-openh264
+        |||
+      },
+      {
+        chroot: true,
         name: "welcome-remove",
         content: |||
           #!/bin/bash
@@ -211,7 +219,6 @@ local getHostname() =
       "bijiben",
       "chromium",
       "git-core",
-      "gstreamer-plugin-openh264",// missing
       "hplip-scan-utils",// missing
       "imagewriter",// missing
       "keepassxc",
@@ -219,7 +226,6 @@ local getHostname() =
       "libfido2-udev",
       "libpcap-devel",
       "lshw",
-      "mozilla-openh264",
       "myrlyn",
       "python313-Pillow-tk",
       "simple-scan",
@@ -238,8 +244,6 @@ local getHostname() =
         "dpkg",
         "gcc-ada",
         "gcc-c++",
-        "gcc15-ada",
-        "gcc15-c++",
         "git-gui",
         "gitk",
         "gnucash",
