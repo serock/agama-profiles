@@ -14,7 +14,7 @@ local getHostname() =
 
 {
   product: {
-    // Clue: https://github.com/agama-project/agama/blob/cfa8d9057004d279508241febf5e97a344300350/products.d/leap_160.yaml#L1
+    // Clue: https://github.com/agama-project/agama/blob/c794bbb9adc612709baf76c1c6e67f9cc3c0e4f9/products.d/leap_160.yaml#L1
     id: "Leap_16.0"
   },
   localization: {
@@ -22,12 +22,12 @@ local getHostname() =
     keyboard: "us",
     timezone: "America/New_York"
   },
-  // Clue: https://agama-project.github.io/docs/user/unattended/users#user
+  // Clue: https://agama-project.github.io/docs/user/reference/profile/users#first-user
   user: {
     fullName: "John",
     userName: "john",
     hashedPassword: true,
-    // Clue: https://agama-project.github.io/docs/user/unattended/users#encrypted-passwords
+    // Clue: https://agama-project.github.io/docs/user/reference/profile/users#encrypted-passwords
     password: "$6$5SFO1XN8VAyuwW.G$LaLNJCAAuqCyT.dgEUW9r4VtDSuS4mRvxnWnMaJC4Wc9THz.Uc/SQDxXuY9Kc8zpAJ1G4FKTWou9t/qEZPSAM1"
   },
   root: {
@@ -217,7 +217,7 @@ local getHostname() =
       "keepassxc",
       "libcap-ng-utils",
       "libfido2-udev",
-      "libpcap-devel",// missing
+      "libpcap-devel",
       "lshw",
       "mozilla-openh264",
       "myrlyn",
@@ -229,7 +229,7 @@ local getHostname() =
     ] + (
       if board == "PRIME H370M-PLUS" then [
         "apcupsd-gui",//missing
-        "bash-completion-devel",// missing
+        "bash-completion-devel",
         "bash-completion-doc",
         "binwalk",
         "checksec",
@@ -244,7 +244,7 @@ local getHostname() =
         "gitk",
         "gnucash",
         "homebank",
-        "java-21-openjdk-devel",// missing
+        "java-21-openjdk-devel",
         "lighttpd",// missing
         "maven",
         "mkvtoolnix",
@@ -252,7 +252,7 @@ local getHostname() =
         "osc",
         "pavucontrol",
         "quilt",
-        "rpm-devel",// missing
+        "rpm-devel",
         "rpmdevtools",
         "rpmlint",
         "rpmlint-Factory",// missing
