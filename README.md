@@ -5,10 +5,10 @@ They are not intended to be used *as is* by anyone except myself.
 ## Testing in VirtualBox
 Download an ISO file from one of the following locations:
 
-* https://download.opensuse.org/repositories/systemsmanagement:/Agama:/Devel/images/iso/
-* https://download.opensuse.org/repositories/systemsmanagement:/Agama:/Release/images/iso/
 * https://download.opensuse.org/distribution/leap/16.0/installer/iso/
 * https://download.opensuse.org/distribution/leap/16.0/offline/
+<!-- https://download.opensuse.org/repositories/systemsmanagement:/Agama:/Devel/images/iso/ -->
+<!-- https://download.opensuse.org/repositories/systemsmanagement:/Agama:/Release/images/iso/ -->
 
 Attach the downloaded ISO to the optical drive of the virtual machine.
 

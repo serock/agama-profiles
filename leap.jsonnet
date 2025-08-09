@@ -59,67 +59,37 @@ local getHostname() =
       },
       {
         chroot: true,
-        name: "chrony-pool-remove",
+        name: "software-remove",
         content: |||
           #!/bin/bash
           zypper --non-interactive remove chrony-pool-openSUSE
           zypper --non-interactive addlock chrony-pool-openSUSE
-          zypper --non-interactive install chrony-pool-empty
-        |||
-      },
-      {
-        chroot: true,
-        name: "openh264-install",
-        content: |||
-          #!/bin/bash
-          zypper --non-interactive install mozilla-openh264
-        |||
-      },
-      {
-        chroot: true,
-        name: "welcome-remove",
-        content: |||
-          #!/bin/bash
           zypper --non-interactive remove opensuse-welcome
           zypper --non-interactive addlock opensuse-welcome
         |||
       },
       {
         chroot: true,
-        name: "wireshark-user",
+        name: "software-install",
         content: |||
           #!/bin/bash
-          usermod --append --groups wireshark %s
+          zypper --non-interactive install chrony-pool-empty
+          zypper --non-interactive install mozilla-openh264
+        |||
+      },
+      {
+        chroot: true,
+        name: "groups-append",
+        content: |||
+          #!/bin/bash
+          getent group docker    && usermod --append --groups docker %s
+          getent group osc       && usermod --append --groups osc %s
+          getent group vboxsf    && usermod --append --groups vboxsf %s
+          getent group vboxusers && usermod --append --groups vboxusers %s
+          getent group wireshark && usermod --append --groups wireshark %s
         ||| % $.user.userName
       }
-    ] + (
-      if board == "PRIME H370M-PLUS" then [
-        {
-          chroot: true,
-          name: "docker-user",
-          content: |||
-            #!/bin/bash
-            usermod --append --groups docker %s
-          ||| % $.user.userName
-        },
-        {
-          chroot: true,
-          name: "osc-user",
-          content: |||
-            #!/bin/bash
-            usermod --append --groups osc %s
-          ||| % $.user.userName
-        },
-        {
-          chroot: true,
-          name: "vbox-user",
-          content: |||
-            #!/bin/bash
-            usermod --append --groups vboxusers %s
-          ||| % $.user.userName
-        }
-      ] else []
-    ),
+    ],
     init: [
       {
         name: "mm-disable",
@@ -131,21 +101,19 @@ local getHostname() =
       {
         name: "nm-init",
         url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/network-manager.sh"
+      },
+      {
+        name: "vbox-guest-additions-iso",
+        // Clue: https://www.virtualbox.org/manual/topics/guestadditions.html#ariaid-title5
+        content: |||
+          #!/bin/bash
+          version=$(VBoxManage --version) || exit 1
+          version=${version%_SUSEr+([0-9])}
+          curl --cert-status --compressed --create-dirs --no-progress-meter --output-dir /usr/lib/virtualbox/additions --remote-name https://download.virtualbox.org/virtualbox/${version}/VBoxGuestAdditions_${version}.iso
+          ln --relative --symbolic /usr/lib/virtualbox/additions/VBoxGuestAdditions_${version}.iso /usr/lib/virtualbox/additions/VBoxGuestAdditions.iso
+        |||
       }
-    ] + (
-      if board == "PRIME H370M-PLUS" then [
-        {
-          name: "vbox-guest-additions",
-          // Clue: https://www.virtualbox.org/manual/topics/guestadditions.html#ariaid-title5
-          content: |||
-            #!/bin/bash
-            version=$(VBoxManage --version | cut --delimiter=_ --fields=1)
-            curl --cert-status --compressed --create-dirs --no-progress-meter --output-dir /usr/lib/virtualbox/additions --remote-name https://download.virtualbox.org/virtualbox/${version}/VBoxGuestAdditions_${version}.iso
-            ln --relative --symbolic /usr/lib/virtualbox/additions/VBoxGuestAdditions_${version}.iso /usr/lib/virtualbox/additions/VBoxGuestAdditions.iso
-          |||
-        }
-      ] else []
-    )
+    ]
   },
   storage: {
     boot: {
@@ -234,7 +202,7 @@ local getHostname() =
       "yubioath-desktop"// missing
     ] + (
       if board == "PRIME H370M-PLUS" then [
-        "apcupsd-gui",//missing
+        "apcupsd-gui",// missing
         "bash-completion-devel",
         "bash-completion-doc",
         "binwalk",
@@ -261,6 +229,8 @@ local getHostname() =
         "rpmlint",
         "rpmlint-Factory",// missing
         "virtualbox-qt"// missing
+      ] else if board == "VirtualBox" then [
+        "virtualbox-guest-tools"// missing
       ] else []
     )
   },
