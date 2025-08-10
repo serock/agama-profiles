@@ -82,12 +82,12 @@ local getHostname() =
         name: "groups-append",
         content: |||
           #!/bin/bash
-          getent group docker    && usermod --append --groups docker %s
-          getent group osc       && usermod --append --groups osc %s
-          getent group vboxsf    && usermod --append --groups vboxsf %s
-          getent group vboxusers && usermod --append --groups vboxusers %s
-          getent group wireshark && usermod --append --groups wireshark %s
-        ||| % $.user.userName
+          getent group docker    && usermod --append --groups docker %(user)s
+          getent group osc       && usermod --append --groups osc %(user)s
+          getent group vboxsf    && usermod --append --groups vboxsf %(user)s
+          getent group vboxusers && usermod --append --groups vboxusers %(user)s
+          getent group wireshark && usermod --append --groups wireshark %(user)s
+        ||| % {user: $.user.userName}
       }
     ],
     init: [
