@@ -100,7 +100,7 @@ local getHostname() =
       },
       {
         name: "nm-init",
-        url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/network-manager.sh"
+        url: "https://github.com/serock/agama-profiles/raw/main/network-manager.sh"
       },
       {
         name: "vbox-guest-additions-iso",
@@ -240,7 +240,7 @@ local getHostname() =
       // Clue: https://chromium.googlesource.com/chromium/src/+/HEAD/docs/enterprise/policies.md#policy-sources
       // Clue: chrome://policy/logs
       destination: "/etc/chromium/policies/managed/chromium-policies.json",
-      url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/chromium-policies.json",
+      url: "https://github.com/serock/agama-profiles/raw/main/chromium-policies.json",
       permissions: "644",
       user: "root",
       group: "root"
@@ -248,7 +248,7 @@ local getHostname() =
     {
       // Clue: https://mozilla.github.io/policy-templates/
       destination: "/etc/firefox/policies/policies.json",
-      url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/firefox-policies.json",
+      url: "https://github.com/serock/agama-profiles/raw/main/firefox-policies.json",
       permissions: "644",
       user: "root",
       group: "root"
@@ -268,7 +268,7 @@ local getHostname() =
     if board == "PRIME H370M-PLUS" then [
       {
         destination: "/etc/apcupsd/apcupsd.conf",
-        url: "https://raw.githubusercontent.com/serock/agama-profiles/refs/heads/main/apcupsd.conf",
+        url: "https://github.com/serock/agama-profiles/raw/main/apcupsd.conf",
         permissions: "644",
         user: "root",
         group: "root"
