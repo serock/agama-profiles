@@ -45,7 +45,7 @@ local getHostname() =
         content: |||
           #!/bin/bash
           zypper refresh --services
-          zypper modifyrepo --disable openSUSE:repo-non-oss openSUSE:update-non-oss
+          zypper modifyrepo --disable openSUSE:repo-non-oss
         |||
       },
       {
