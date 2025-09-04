@@ -66,6 +66,8 @@ local getHostname() =
           zypper --non-interactive addlock chrony-pool-openSUSE
           zypper --non-interactive remove opensuse-welcome
           zypper --non-interactive addlock opensuse-welcome
+          zypper --non-interactive remove opensuse-welcome-launcher
+          zypper --non-interactive addlock opensuse-welcome-launcher
         |||
       },
       {
@@ -188,6 +190,8 @@ local getHostname() =
       "avahi-utils",
       "bijiben",
       "chromium",
+      "efitools",
+      "efivar",
       "git-core",
       "hplip-scan-utils",// missing
       "imagewriter",// missing
@@ -198,6 +202,8 @@ local getHostname() =
       "lshw",
       "myrlyn",
       "python313-Pillow-tk",
+      "sbctl",
+      "sbsigntools",
       "simple-scan",
       "wireshark-ui-qt",
       "yubikey-manager-qt",// missing
@@ -239,6 +245,7 @@ local getHostname() =
   questions: {
     answers: [
       {
+        // Clue: https://agama-project.github.io/docs/user/reference/profile/answers#supported-question-classes
         class: "storage.luks_activation",
         answer: "skip"
       }
