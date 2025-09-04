@@ -17,12 +17,12 @@ Start the virtual machine.
 Select *UEFI Firmware Settings*\
 Select *Boot Manager*\
 Select *UEFI VBOX CD-ROM*\
-Select *Install openSUSE (x86_64)* or *Install Leap 16.0 (x86_64)*
+Select *Install Leap 16.0 (x86_64)* or *Install openSUSE (x86_64)*
 
-When the Product Selection page appears, do one of the following:
+When the Product Selection page appears, try one of the following:
 
-1. Press Ctrl-Alt-T to get to a terminal, or
-2. Press Right-Ctrl-F1 to get to the console and login as root.
+1. Press Right-Ctrl-F1 to get to the console and login as root, or
+2. Press Ctrl-Alt-T to get to a terminal
 
 ```
 agama download https://github.com/serock/agama-profiles/raw/main/answers.yml answers.yml
