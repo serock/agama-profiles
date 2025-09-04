@@ -180,7 +180,7 @@ local getHostname() =
   software: {
     patterns: {
       add: [
-        "cockpit",// error
+        "cockpit",
         "gnome"
       ]
     },
@@ -235,6 +235,14 @@ local getHostname() =
         "virtualbox-guest-tools"// missing
       ] else []
     )
+  },
+  questions: {
+    answers: [
+      {
+        class: "storage.luks_activation",
+        answer: "skip"
+      }
+    ]
   },
   files: [
     {

@@ -1,10 +1,6 @@
 {
   "answers": [
     {
-      "answer": "skip",
-      "class": "storage.luks_activation"
-    },
-    {
       "answer": "Retry",
       "class": "software.medium_error",
       "data": {
