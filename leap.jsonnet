@@ -178,10 +178,12 @@ local getHostname() =
     ]
   },
   software: {
-    patterns: [
-      "cockpit",// error
-      "gnome"
-    ],
+    patterns: {
+      add: [
+        "cockpit",// error
+        "gnome"
+      ]
+    },
     packages: [
       "avahi-utils",
       "bijiben",
