@@ -182,7 +182,6 @@ local getHostname() =
   software: {
     patterns: {
       add: [
-        "cockpit",
         "gnome"
       ]
     },
