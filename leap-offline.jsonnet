@@ -77,6 +77,7 @@ local getHostname() =
           #!/bin/bash
           zypper --non-interactive install chrony-pool-empty
           zypper --non-interactive install mozilla-openh264
+          zypper --non-interactive install --type pattern cockpit
         |||
       },
       {
@@ -183,19 +184,20 @@ local getHostname() =
   software: {
     patterns: {
       add: [
-        "gnome",
-        "cockpit"
+        "gnome"//,
+        //"cockpit"
       ]
     },
     packages: [
+      "agama-scripts",
       "avahi-utils",
       "bijiben",
       "chromium",
       "efitools",
       "efivar",
       "git-core",
-      "hplip-scan-utils",// missing
-      "imagewriter",// missing
+      //"hplip-scan-utils",// missing
+      //"imagewriter",// missing
       "keepassxc",
       "libcap-ng-utils",
       "libfido2-udev",
@@ -206,12 +208,12 @@ local getHostname() =
       "sbctl",
       "sbsigntools",
       "simple-scan",
-      "wireshark-ui-qt",
-      "yubikey-manager-qt",// missing
-      "yubioath-desktop"// missing
+      "wireshark-ui-qt"//,
+      //"yubikey-manager-qt",// missing
+      //"yubioath-desktop"// missing
     ] + (
       if board == "PRIME H370M-PLUS" then [
-        "apcupsd-gui",// missing
+        //"apcupsd-gui",// missing
         "bash-completion-devel",
         "bash-completion-doc",
         "binwalk",
@@ -226,7 +228,7 @@ local getHostname() =
         "gnucash",
         "homebank",
         "java-21-openjdk-devel",
-        "lighttpd",// missing
+        //"lighttpd",// missing
         "maven",
         "mkvtoolnix",
         "nvme-cli-bash-completion",
@@ -235,11 +237,11 @@ local getHostname() =
         "quilt",
         "rpm-devel",
         "rpmdevtools",
-        "rpmlint",
-        "rpmlint-Factory",// missing
-        "virtualbox-qt"// missing
+        "rpmlint"//,
+        //"rpmlint-Factory",// missing
+        //"virtualbox-qt"// missing
       ] else if board == "VirtualBox" then [
-        "virtualbox-guest-tools"// missing
+        //"virtualbox-guest-tools"// missing
       ] else []
     )
   },
