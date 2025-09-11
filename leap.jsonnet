@@ -198,14 +198,14 @@ local getHostname() =
       "imagewriter",// missing
       "keepassxc",
       "libcap-ng-utils",
-      "libfido2-udev",
+      //"libfido2-udev",
       "libpcap-devel",
       "lshw",
       "myrlyn",
       "python313-Pillow-tk",
       "sbctl",
       "sbsigntools",
-      "simple-scan",
+      //"simple-scan",
       "wireshark-ui-qt",
       "yubikey-manager-qt",// missing
       "yubioath-desktop"// missing
@@ -236,7 +236,8 @@ local getHostname() =
         "rpm-devel",
         "rpmdevtools",
         "rpmlint",
-        "rpmlint-Factory",// missing
+        "rpmlint-mini",
+        "rpmlint-strict",
         "virtualbox-qt"// missing
       ] else if board == "VirtualBox" then [
         "virtualbox-guest-tools"// missing

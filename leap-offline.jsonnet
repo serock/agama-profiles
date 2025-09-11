@@ -200,14 +200,14 @@ local getHostname() =
       //"imagewriter",// missing
       "keepassxc",
       "libcap-ng-utils",
-      "libfido2-udev",
+      //"libfido2-udev",
       "libpcap-devel",
       "lshw",
       "myrlyn",
       "python313-Pillow-tk",
       "sbctl",
       "sbsigntools",
-      "simple-scan",
+      //"simple-scan",
       "wireshark-ui-qt"//,
       //"yubikey-manager-qt",// missing
       //"yubioath-desktop"// missing
@@ -237,13 +237,20 @@ local getHostname() =
         "quilt",
         "rpm-devel",
         "rpmdevtools",
-        "rpmlint"//,
-        //"rpmlint-Factory",// missing
+        "rpmlint",
+        "rpmlint-mini",
+        "rpmlint-strict"//,
         //"virtualbox-qt"// missing
       ] else if board == "VirtualBox" then [
         //"virtualbox-guest-tools"// missing
       ] else []
-    )
+    ),
+    extraRepositories: [
+      {
+        alias: "repo-oss",
+        url: "http://cdn.opensuse.org/distribution/leap/16.0/repo/oss/x86_64",
+      }
+    ]
   },
   questions: {
     answers: [
