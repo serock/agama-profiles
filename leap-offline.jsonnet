@@ -77,7 +77,6 @@ local getHostname() =
           #!/bin/bash
           zypper --non-interactive install chrony-pool-empty
           zypper --non-interactive install mozilla-openh264
-          zypper --non-interactive install --type pattern cockpit
         |||
       },
       {
@@ -184,8 +183,8 @@ local getHostname() =
   software: {
     patterns: {
       add: [
-        "gnome"//,
-        //"cockpit"
+        "gnome",
+        "cockpit"
       ]
     },
     packages: [
@@ -246,7 +245,7 @@ local getHostname() =
     extraRepositories: [
       {
         alias: "repo-dl-oss",
-        url: "https://mirror.us.leaseweb.net/opensuse/distribution/leap/${releasever}/repo/oss/$basearch",
+        url: "https://mirror.us.leaseweb.net/opensuse/distribution/leap/16.0/repo/oss/x86_64",
         gpgFingerprints: ["AD48 5664 E901 B867 051A B15F 35A2 F86E 29B7 00A4"]
       }
     ]
