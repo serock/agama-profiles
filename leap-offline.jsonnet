@@ -196,24 +196,22 @@ local getHostname() =
       "efitools",
       "efivar",
       "git-core",
-      //"hplip-scan-utils",// missing
-      //"imagewriter",// missing
+      "hplip-scan-utils",// missing
+      "imagewriter",// missing
       "keepassxc",
       "libcap-ng-utils",
-      //"libfido2-udev",
       "libpcap-devel",
       "lshw",
       "myrlyn",
       "python313-Pillow-tk",
       "sbctl",
       "sbsigntools",
-      //"simple-scan",
-      "wireshark-ui-qt"//,
-      //"yubikey-manager-qt",// missing
-      //"yubioath-desktop"// missing
+      "wireshark-ui-qt",
+      "yubikey-manager-qt",// missing
+      "yubioath-desktop"// missing
     ] + (
       if board == "PRIME H370M-PLUS" then [
-        //"apcupsd-gui",// missing
+        "apcupsd-gui",// missing
         "bash-completion-devel",
         "bash-completion-doc",
         "binwalk",
@@ -228,7 +226,7 @@ local getHostname() =
         "gnucash",
         "homebank",
         "java-21-openjdk-devel",
-        //"lighttpd",// missing
+        "lighttpd",// missing
         "maven",
         "mkvtoolnix",
         "nvme-cli-bash-completion",
@@ -239,16 +237,17 @@ local getHostname() =
         "rpmdevtools",
         "rpmlint",
         "rpmlint-mini",
-        "rpmlint-strict"//,
-        //"virtualbox-qt"// missing
+        "rpmlint-strict",
+        "virtualbox-qt"// missing
       ] else if board == "VirtualBox" then [
-        //"virtualbox-guest-tools"// missing
+        "virtualbox-guest-tools"// missing
       ] else []
     ),
     extraRepositories: [
       {
-        alias: "repo-oss",
-        url: "http://cdn.opensuse.org/distribution/leap/16.0/repo/oss/x86_64",
+        alias: "repo-dl-oss",
+        url: "https://mirror.us.leaseweb.net/opensuse/distribution/leap/${releasever}/repo/oss/$basearch",
+        gpgFingerprints: ["AD48 5664 E901 B867 051A B15F 35A2 F86E 29B7 00A4"]
       }
     ]
   },

@@ -198,14 +198,12 @@ local getHostname() =
       "imagewriter",// missing
       "keepassxc",
       "libcap-ng-utils",
-      //"libfido2-udev",
       "libpcap-devel",
       "lshw",
       "myrlyn",
       "python313-Pillow-tk",
       "sbctl",
       "sbsigntools",
-      //"simple-scan",
       "wireshark-ui-qt",
       "yubikey-manager-qt",// missing
       "yubioath-desktop"// missing
