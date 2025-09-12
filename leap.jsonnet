@@ -205,7 +205,7 @@ local getHostname() =
       "sbctl",
       "sbsigntools",
       "wireshark-ui-qt",
-      "yubikey-manager,
+      "yubikey-manager",
       "yubioath-flutter"// missing
     ] + (
       if board == "PRIME H370M-PLUS" then [
