@@ -194,7 +194,7 @@ local getHostname() =
       "efitools",
       "efivar",
       "git-core",
-      "hplip-scan-utils",// missing
+      "hplip",
       "imagewriter",// missing
       "keepassxc",
       "libcap-ng-utils",
@@ -205,8 +205,8 @@ local getHostname() =
       "sbctl",
       "sbsigntools",
       "wireshark-ui-qt",
-      "yubikey-manager-qt",// missing
-      "yubioath-desktop"// missing
+      "yubikey-manager,
+      "yubioath-flutter"// missing
     ] + (
       if board == "PRIME H370M-PLUS" then [
         "apcupsd-gui",// missing
@@ -224,7 +224,6 @@ local getHostname() =
         "gnucash",
         "homebank",
         "java-21-openjdk-devel",
-        "lighttpd",// missing
         "maven",
         "mkvtoolnix",
         "nvme-cli-bash-completion",
