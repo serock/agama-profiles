@@ -191,7 +191,6 @@ local getHostname() =
       "libcap-ng-utils",
       "libpcap-devel",
       "lshw",
-      "myrlyn",
       "python313-Pillow-tk",
       "sbctl",
       "sbsigntools",
