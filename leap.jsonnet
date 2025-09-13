@@ -41,15 +41,6 @@ local getHostname() =
     post: [
       {
         chroot: true,
-        name: "cdn-disable-non-oss",
-        content: |||
-          #!/bin/bash
-          zypper refresh --services
-          zypper modifyrepo --disable openSUSE:repo-non-oss
-        |||
-      },
-      {
-        chroot: true,
         name: "chrony-dhcp",
         content: |||
           #!/bin/bash
