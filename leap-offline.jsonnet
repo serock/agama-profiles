@@ -66,6 +66,7 @@ local getHostname() =
         name: "software-install",
         content: |||
           #!/bin/bash
+          zypper --non-interactive install agama-scripts
           zypper --non-interactive install chrony-pool-empty
           zypper --non-interactive install mozilla-openh264
         |||
@@ -174,12 +175,10 @@ local getHostname() =
   software: {
     patterns: {
       add: [
-        "gnome",
-        "cockpit"
+        "gnome"
       ]
     },
     packages: [
-      "agama-scripts",
       "avahi-utils",
       "bijiben",
       "chromium",
@@ -230,14 +229,7 @@ local getHostname() =
       ] else if board == "VirtualBox" then [
         "virtualbox-guest-tools"// missing
       ] else []
-    ),
-    extraRepositories: [
-      {
-        alias: "repo-dl-oss",
-        url: "https://mirror.us.leaseweb.net/opensuse/distribution/leap/16.0/repo/oss/x86_64",
-        gpgFingerprints: ["AD48 5664 E901 B867 051A B15F 35A2 F86E 29B7 00A4"]
-      }
-    ]
+    )
   },
   questions: {
     answers: [
