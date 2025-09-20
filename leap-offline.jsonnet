@@ -14,8 +14,8 @@ local getHostname() =
 
 {
   product: {
-    // Clue: https://github.com/agama-project/agama/blob/c794bbb9adc612709baf76c1c6e67f9cc3c0e4f9/products.d/leap_160.yaml#L1
-    id: "Leap_16.0"
+    // Clue: https://github.com/agama-project/agama/blob/f1605ae49cd008c687c5bf00e2a4c7ab37fd494c/products.d/leap_160.yaml#L1
+    id: "openSUSE_Leap"
   },
   localization: {
     language: "en_US.UTF-8",
@@ -185,6 +185,7 @@ local getHostname() =
       "efitools",
       "efivar",
       "git-core",
+      "gnome-terminal",
       "hplip",
       "imagewriter",// missing
       "keepassxc",
