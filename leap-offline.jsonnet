@@ -69,6 +69,57 @@ local getHostname() =
           zypper --non-interactive install agama-scripts
           zypper --non-interactive install chrony-pool-empty
           zypper --non-interactive install mozilla-openh264
+          zypper --non-interactive install --type pattern cockpit
+          zypper --non-interactive install avahi-utils
+          zypper --non-interactive install bijiben
+          zypper --non-interactive install chromium
+          zypper --non-interactive install efitools
+          zypper --non-interactive install efivar
+          zypper --non-interactive install gedit
+          zypper --non-interactive install git-core
+          zypper --non-interactive install gnome-terminal
+          zypper --non-interactive install hplip
+          zypper --non-interactive --ignore-unknown install imagewriter
+          zypper --non-interactive install keepassxc
+          zypper --non-interactive install libcap-ng-utils
+          zypper --non-interactive install libpcap-devel
+          zypper --non-interactive install lshw
+          zypper --non-interactive install python313-Pillow-tk
+          zypper --non-interactive install sbctl
+          zypper --non-interactive install sbsigntools
+          zypper --non-interactive install wireshark-ui-qt
+          zypper --non-interactive install yubikey-manager
+          zypper --non-interactive --ignore-unknown install yubioath-flutter
+          if [[ "$(dmidecode -s baseboard-product-name)" == "PRIME H370M-PLUS" ]]; then
+            zypper --non-interactive --ignore-unknown install apcupsd-gui
+            zypper --non-interactive install bash-completion-devel
+            zypper --non-interactive install bash-completion-doc
+            zypper --non-interactive install binwalk
+            zypper --non-interactive install checksec
+            zypper --non-interactive install devscripts
+            zypper --non-interactive install docker-bash-completion
+            zypper --non-interactive install dpkg
+            zypper --non-interactive install gcc-ada
+            zypper --non-interactive install gcc-c++
+            zypper --non-interactive install git-gui
+            zypper --non-interactive install gitk
+            zypper --non-interactive install gnucash
+            zypper --non-interactive install homebank
+            zypper --non-interactive install java-21-openjdk-devel
+            zypper --non-interactive install maven
+            zypper --non-interactive install mkvtoolnix
+            zypper --non-interactive install nvme-cli-bash-completion
+            zypper --non-interactive install osc
+            zypper --non-interactive install quilt
+            zypper --non-interactive install rpm-devel
+            zypper --non-interactive install rpmdevtools
+            zypper --non-interactive install rpmlint
+            zypper --non-interactive install rpmlint-mini
+            zypper --non-interactive install rpmlint-strict
+            zypper --non-interactive --ignore-unknown install virtualbox-qt
+          elif [[ "$(dmidecode -s baseboard-product-name)" == "VirtualBox" ]]; then
+            zypper --non-interactive --ignore-unknown install virtualbox-guest-tools
+          fi
         |||
       },
       {
@@ -102,7 +153,7 @@ local getHostname() =
         // Clue: https://www.virtualbox.org/manual/topics/guestadditions.html#ariaid-title5
         content: |||
           #!/bin/bash
-          version=$(VBoxManage --version) || exit 1
+          version=$(VBoxManage --version) || exit 0
           version=${version%_SUSEr+([0-9])}
           curl --cert-status --compressed --create-dirs --no-progress-meter --output-dir /usr/lib/virtualbox/additions --remote-name https://download.virtualbox.org/virtualbox/${version}/VBoxGuestAdditions_${version}.iso
           ln --relative --symbolic /usr/lib/virtualbox/additions/VBoxGuestAdditions_${version}.iso /usr/lib/virtualbox/additions/VBoxGuestAdditions.iso
@@ -179,57 +230,10 @@ local getHostname() =
       ]
     },
     packages: [
-      "avahi-utils",
-      "bijiben",
-      "chromium",
-      "efitools",
-      "efivar",
-      "git-core",
-      "gnome-terminal",
-      "hplip",
-      "imagewriter",// missing
-      "keepassxc",
-      "libcap-ng-utils",
-      "libpcap-devel",
-      "lshw",
-      "myrlyn",
-      "python313-Pillow-tk",
-      "sbctl",
-      "sbsigntools",
-      "wireshark-ui-qt",
-      "yubikey-manager",
-      "yubioath-flutter"// missing
+      "myrlyn"
     ] + (
       if board == "PRIME H370M-PLUS" then [
-        "apcupsd-gui",// missing
-        "bash-completion-devel",
-        "bash-completion-doc",
-        "binwalk",
-        "checksec",
-        "devscripts",
-        "docker-bash-completion",
-        "dpkg",
-        "gcc-ada",
-        "gcc-c++",
-        "git-gui",
-        "gitk",
-        "gnucash",
-        "homebank",
-        "java-21-openjdk-devel",
-        "maven",
-        "mkvtoolnix",
-        "nvme-cli-bash-completion",
-        "osc",
-        "pavucontrol",
-        "quilt",
-        "rpm-devel",
-        "rpmdevtools",
-        "rpmlint",
-        "rpmlint-mini",
-        "rpmlint-strict",
-        "virtualbox-qt"// missing
-      ] else if board == "VirtualBox" then [
-        "virtualbox-guest-tools"// missing
+        "pavucontrol"
       ] else []
     )
   },

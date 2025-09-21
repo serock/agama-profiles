@@ -101,7 +101,7 @@ local getHostname() =
         // Clue: https://www.virtualbox.org/manual/topics/guestadditions.html#ariaid-title5
         content: |||
           #!/bin/bash
-          version=$(VBoxManage --version) || exit 1
+          version=$(VBoxManage --version) || exit 0
           version=${version%_SUSEr+([0-9])}
           curl --cert-status --compressed --create-dirs --no-progress-meter --output-dir /usr/lib/virtualbox/additions --remote-name https://download.virtualbox.org/virtualbox/${version}/VBoxGuestAdditions_${version}.iso
           ln --relative --symbolic /usr/lib/virtualbox/additions/VBoxGuestAdditions_${version}.iso /usr/lib/virtualbox/additions/VBoxGuestAdditions.iso
@@ -184,6 +184,7 @@ local getHostname() =
       "chromium",
       "efitools",
       "efivar",
+      "gedit",
       "git-core",
       "gnome-terminal",
       "hplip",
