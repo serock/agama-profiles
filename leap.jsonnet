@@ -72,6 +72,14 @@ local getHostname() =
       },
       {
         chroot: true,
+        name: "repo-1-disable",
+        content: |||
+          #!/bin/bash
+          zypper --non-interactive modifyrepo --disable 1
+        |||
+      },
+      {
+        chroot: true,
         name: "groups-append",
         content: |||
           #!/bin/bash
@@ -259,6 +267,17 @@ local getHostname() =
       destination: "/etc/firefox/policies/policies.json",
       url: "https://github.com/serock/agama-profiles/raw/main/firefox-policies.json",
       permissions: "644",
+      user: "root",
+      group: "root"
+    },
+    {
+      destination: "/etc/fwupd/fwupd.conf",
+      content: |||
+        [fwupd]
+        # use `man 5 fwupd.conf` for documentation
+        DisabledPlugins=uefi_dbx
+      |||,
+      permissions: "640",
       user: "root",
       group: "root"
     },
