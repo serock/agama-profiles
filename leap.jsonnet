@@ -192,6 +192,7 @@ local getHostname() =
       "chromium",
       "efitools",
       "efivar",
+      "firewall-config",
       "gedit",
       "git-core",
       "gnome-terminal",

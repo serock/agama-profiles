@@ -75,6 +75,7 @@ local getHostname() =
           zypper --non-interactive install chromium
           zypper --non-interactive install efitools
           zypper --non-interactive install efivar
+          zypper --non-interactive install firewall-config
           zypper --non-interactive install gedit
           zypper --non-interactive install git-core
           zypper --non-interactive install gnome-terminal
