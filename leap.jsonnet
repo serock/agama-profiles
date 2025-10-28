@@ -49,6 +49,16 @@ local getHostname() =
         |||
       },
       {
+        // Clue: https://docs.flatpak.org/en/latest/extension.html#unmaintained-flatpak-extensions
+        chroot: true,
+        name: "flatpak-unmaintained-extensions",
+        content: |||
+          #!/bin/bash
+          mkdir -p /var/lib/flatpak/extension/org.mozilla.firefox.systemconfig/x86_64/stable/policies
+          cp /etc/firefox/policies/policies.json /var/lib/flatpak/extension/org.mozilla.firefox.systemconfig/x86_64/stable/policies/
+        |||
+      },
+      {
         chroot: true,
         name: "software-remove",
         content: |||

@@ -23,8 +23,9 @@
       "Value": true,
       "Locked": true,
       "Cryptomining": true,
-      "EmailTracking": true,
       "Fingerprinting": true,
+      "EmailTracking": true,
+      "SuspectedFingerprinting": true,
       "Exceptions": []
     },
     "FirefoxHome": {
@@ -33,8 +34,16 @@
       "SponsoredTopSites": false,
       "Highlights": false,
       "Pocket": false,
+      "Stories": false,
       "SponsoredPocket": false,
+      "SponsoredStories": false,
       "Snippets": false,
+      "Locked": true
+    },
+    "GenerativeAI": {
+      "Chatbot": false,
+      "LinkPreviews": false,
+      "TabGroups": false,
       "Locked": true
     },
     "NetworkPrediction": false,
