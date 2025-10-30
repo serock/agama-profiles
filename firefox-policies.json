@@ -40,6 +40,12 @@
       "Snippets": false,
       "Locked": true
     },
+    "FirefoxSuggest": {
+      "WebSuggestions": false,
+      "SponsoredSuggestions": false,
+      "ImproveSuggest": false,
+      "Locked": true
+    },
     "GenerativeAI": {
       "Chatbot": false,
       "LinkPreviews": false,
@@ -71,11 +77,11 @@
         "Value": true,
         "Status": "locked"
       },
-      "browser.urlbar.suggest.quicksuggest.nonsponsored": {
+      "browser.newtabpage.activity-stream.showSponsoredCheckboxes": {
         "Value": false,
         "Status": "locked"
       },
-      "browser.urlbar.suggest.quicksuggest.sponsored": {
+      "browser.newtabpage.activity-stream.showWeather": {
         "Value": false,
         "Status": "locked"
       },
@@ -103,15 +109,15 @@
         "Value": false,
         "Status": "locked"
       },
+      "media.webspeech.synth.enabled": {
+        "Value": false,
+        "Status": "user"
+      },
       "network.IDN_show_punycode": {
         "Value": true,
         "Status": "locked"
       },
       "privacy.globalprivacycontrol.enabled": {
-        "Value": true,
-        "Status": "locked"
-      },
-      "privacy.globalprivacycontrol.functionality.enabled": {
         "Value": true,
         "Status": "locked"
       },
