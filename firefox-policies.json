@@ -20,12 +20,8 @@
       "Locked": true
     },
     "EnableTrackingProtection": {
-      "Value": true,
       "Locked": true,
-      "Cryptomining": true,
-      "Fingerprinting": true,
-      "EmailTracking": true,
-      "SuspectedFingerprinting": true,
+      "Category": "strict",
       "Exceptions": []
     },
     "FirefoxHome": {
@@ -67,10 +63,6 @@
     "Preferences": {
       "browser.cache.disk.enable":{
         "Value": false,
-        "Status": "locked"
-      },
-      "browser.contentblocking.category": {
-        "Value": "strict",
         "Status": "locked"
       },
       "browser.fixup.domainsuffixwhitelist.lan": {
