@@ -234,7 +234,6 @@ local getHostname() =
         "git-gui",
         "gitk",
         "gnucash",
-        "homebank",
         "java-21-openjdk-devel",
         "maven",
         "mkvtoolnix",
