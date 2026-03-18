@@ -6,7 +6,7 @@ connection.type 802-3-ethernet \
 connection.zone home \
 802-3-ethernet.wake-on-lan ignore \
 ipv4.method auto \
-ipv6.method disabled
+ipv6.method auto
 
 nmcli connection add \
 connection.id wired-public \

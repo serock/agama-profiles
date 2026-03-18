@@ -15,8 +15,10 @@
     "DisablePocket": true,
     "DisableTelemetry": true,
     "DNSOverHTTPS": {
-      "Enabled": false,
+      "Enabled": true,
       "ExcludedDomains": [],
+      "Fallback": false,
+      "ProviderURL": "https://freedns.controld.com/family",
       "Locked": true
     },
     "EnableTrackingProtection": {
