@@ -18,13 +18,13 @@
       "Enabled": true,
       "ExcludedDomains": ["lan"],
       "Fallback": false,
-      "ProviderURL": "https://freedns.controld.com/family",
+      "ProviderURL": "https://freedns.controld.com/no-drugs-malware-porn-typo",
       "Locked": true
     },
     "EnableTrackingProtection": {
-      "Locked": true,
       "Category": "strict",
-      "Exceptions": []
+      "Exceptions": [],
+      "Locked": true
     },
     "FirefoxHome": {
       "Search": false,
