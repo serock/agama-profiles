@@ -16,7 +16,7 @@
     "DisableTelemetry": true,
     "DNSOverHTTPS": {
       "Enabled": true,
-      "ExcludedDomains": [],
+      "ExcludedDomains": ["lan"],
       "Fallback": false,
       "ProviderURL": "https://freedns.controld.com/family",
       "Locked": true
