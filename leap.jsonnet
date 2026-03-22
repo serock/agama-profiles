@@ -14,12 +14,35 @@ local getHostname() =
 
 {
   product: {
-    // Clue: https://github.com/agama-project/agama/blob/f1605ae49cd008c687c5bf00e2a4c7ab37fd494c/products.d/leap_160.yaml#L1
+    // Clue: https://github.com/agama-project/agama/blob/9def0554aa2a4343668e0cdceb610e633c9d0f06/products.d/leap_161.yaml#L1
     id: "openSUSE_Leap"
   },
-  localization: {
-    language: "en_US.UTF-8",
-    keyboard: "us",
+  network: {
+    connections: [
+      {
+        id: "wired-home",
+        method4: "auto",
+        method6: "auto",
+        match: {
+          interface: ["eth*", "eno*", "enp*"]
+        }
+      },
+      {
+        id: "wired-public",
+        method4: "auto",
+        method6: "auto",
+        nameservers: ["76.76.2.4", "76.76.10.4", "2606:1a40::4", "2606:1a40:1::4"],
+        ignoreAutoDns: true,
+        autoconnect: false,
+        match: {
+          interface: ["eth*", "eno*", "enp*"]
+        }
+      }
+    ]
+  },
+  l10n: {
+    locale: "en_US.UTF-8",
+    keymap: "us",
     timezone: "America/New_York"
   },
   // Clue: https://agama-project.github.io/docs/user/reference/profile/users#first-user
@@ -145,45 +168,45 @@ local getHostname() =
         ptableType: "gpt",
         partitions: [
           {
-            search: "*",
-            delete: true
-          },
-          {
-            filesystem: {
-              type: "ext4",
-              path: "/",
-              mountBy: "uuid",
-              mountOptions: [
+            "filesystem": {
+              "mountOptions": [
                 "defaults",
                 "noatime"
-              ]
-            },
-            size: "16 GiB"
+              ],
+              "path": "/",
+              "reuseIfPossible": false,
+              "type": "ext4"
+            }
           },
           {
             encryption: {
               luks2: {
-                password: "changeme",
-                pbkdFunction: "pbkdf2"
+                password: "changeme"
               }
             },
-            filesystem: {
-              type: "ext4",
-              path: "/home",
-              mountBy: "uuid",
-              mountOptions: [
+            "filesystem": {
+              "mountOptions": [
                 "defaults",
                 "noatime"
-              ]
+              ],
+              "path": "/home",
+              "reuseIfPossible": false,
+              "type": "ext4"
             }
           },
           {
             encryption: "random_swap",
-            filesystem: {
-              type: "swap",
-              path: "swap"
-            },
-            size: "2 GiB"
+            "filesystem": {
+              "path": "swap",
+              "reuseIfPossible": false,
+              "type": "swap"
+            }
+          },
+          {
+            "delete": true,
+            "search": {
+              "ifNotFound": "skip"
+            }
           }
         ]
       }
@@ -193,7 +216,10 @@ local getHostname() =
     patterns: {
       add: [
         "gnome",
-        "cockpit"
+        "selinux",
+        "documentation",
+        "cockpit",
+        "sw_management"
       ]
     },
     packages: [
@@ -257,7 +283,7 @@ local getHostname() =
       {
         // Clue: https://agama-project.github.io/docs/user/reference/profile/answers#supported-question-classes
         class: "storage.luks_activation",
-        answer: "skip"
+        action: "skip"
       }
     ]
   },
