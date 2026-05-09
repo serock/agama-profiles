@@ -3,8 +3,6 @@ local board = agama.findByID(agama.lshw, "core").product;
 local getHostname() =
   if board == "PRIME H370M-PLUS" then
     "desktop"
-  else if board == "4239CTO" then
-    "laptop15"
   else if board == "IPXBD-RB" then
     "mini"
   else if board == "VirtualBox" then
