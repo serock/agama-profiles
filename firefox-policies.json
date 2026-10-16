@@ -3,31 +3,35 @@
     "AIControls": {
       "Default": {
         "Value": "blocked",
-	"Locked": true
+        "Locked": true
       },
       "LinkPreviewKeyPoints": {
         "Value": "blocked",
-	"Locked": true
+        "Locked": true
       },
       "PDFAltText": {
         "Value": "blocked",
-	"Locked": true
+        "Locked": true
       },
       "SidebarChatbot": {
         "Value": "blocked",
-	"Locked": true
+        "Locked": true
       },
       "SmartTabGroups": {
         "Value": "blocked",
-	"Locked": true
+        "Locked": true
       },
       "SmartWindow": {
         "Value": "blocked",
-	"Locked": true
+        "Locked": true
+      },
+      "SpeechRecognition": {
+        "Value": "blocked",
+        "Locked": true
       },
       "Translations": {
         "Value": "blocked",
-	"Locked": true
+        "Locked": true
       }
     },
     "DisabledCiphers": {
@@ -48,13 +52,15 @@
       "Enabled": true,
       "ExcludedDomains": ["lan"],
       "Fallback": false,
-      "ProviderURL": "https://freedns.controld.com/no-drugs-malware-porn-typo",
+      "ProviderURL": "https://family.cloudflare-dns.com/dns-query",
       "Locked": true
     },
     "EnableTrackingProtection": {
       "Category": "strict",
-      "Exceptions": [],
-      "Locked": true
+      "Exceptions": ["https://voice.google.com"],
+      "BaselineExceptions": true,
+      "Value": true,
+      "Locked": false
     },
     "FirefoxHome": {
       "Search": false,
@@ -72,13 +78,6 @@
       "WebSuggestions": false,
       "SponsoredSuggestions": false,
       "ImproveSuggest": false,
-      "Locked": true
-    },
-    "GenerativeAI": {
-      "Enabled": false,
-      "Chatbot": false,
-      "LinkPreviews": false,
-      "TabGroups": false,
       "Locked": true
     },
     "NetworkPrediction": false,

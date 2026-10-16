@@ -29,7 +29,7 @@ local getHostname() =
         id: "wired-public",
         method4: "auto",
         method6: "auto",
-        nameservers: ["76.76.2.4", "76.76.10.4", "2606:1a40::4", "2606:1a40:1::4"],
+        nameservers: ["1.1.1.3", "1.0.0.3", "2606:4700:4700::1113", "2606:4700:4700::1003"],
         ignoreAutoDns: true,
         autoconnect: false,
         match: {

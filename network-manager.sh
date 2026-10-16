@@ -4,8 +4,7 @@ wired-home \
 connection.autoconnect-priority 0 \
 connection.type 802-3-ethernet \
 connection.zone home \
-802-3-ethernet.wake-on-lan ignore \
-ipv4.ignore-auto-dns yes
+802-3-ethernet.wake-on-lan ignore
 
 nmcli connection modify \
 wired-public \
